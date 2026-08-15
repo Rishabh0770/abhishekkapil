@@ -43,7 +43,12 @@
     --paper:#EDE7DA; --mist:#98A1AC;
   }
   html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--mist);font-family:'Inter',sans-serif;overflow-x:hidden;}
+  body{background:var(--bg);color:var(--mist);font-family:'Inter',sans-serif;overflow-x:hidden;line-height:1.7;text-rendering:optimizeLegibility;}
+  h1,h2,h3,h4,h5,h6,.font-display{line-height:1.12;letter-spacing:-0.02em;text-wrap:balance;}
+  p, li, a, span, label, input, textarea, button{line-height:1.7;}
+  p{margin:0 0 1rem;}
+  ul{margin:0;padding-left:1.3rem;}
+  .content-copy{max-width:62ch;}
   ::selection{background:var(--safety);color:#111316;}
   ::-webkit-scrollbar{width:10px;}
   ::-webkit-scrollbar-track{background:var(--bg);}
@@ -190,10 +195,10 @@
       <h1 class="font-display text-paper text-[2.6rem] leading-[1.05] sm:text-6xl md:text-7xl font-bold mb-6">
         Abhishek Kapil
       </h1>
-      <p class="text-mist text-base md:text-lg max-w-xl leading-relaxed mb-9">
-        8 years turning site surveys and load calculations into buildings that stand —
-        structural design, project planning, cost estimation &amp; 3D visualization
-        for resorts, housing and infrastructure across Himachal Pradesh.
+      <p class="text-mist text-base md:text-lg max-w-xl mb-9 content-copy">
+        8+ years transforming site surveys, load calculations, and execution plans into strong,
+        practical structures. I deliver structural design, project planning, cost estimation,
+        and 3D visualization for residential, resort, and infrastructure projects across Himachal Pradesh.
       </p>
       <div class="flex flex-wrap gap-4 mb-14">
         <a href="#projects" class="btn-primary rounded-full font-mono text-xs uppercase tracking-wider px-7 py-3.5 inline-block">View Projects</a>
@@ -240,17 +245,16 @@
         <h2 class="font-display text-3xl md:text-5xl font-bold text-paper mb-6 leading-tight">
           Detail-oriented by trade, precise by nature.
         </h2>
-        <p class="text-mist leading-relaxed mb-5 text-[15px] md:text-base">
-          I'm a structural engineer and planner based in Solan, Himachal Pradesh, with eight years
-          across construction design, project management, cost estimation &amp; billing, interior/exterior
-          design and 3D graphic rendering. My work sits at the intersection of the drawing board and
-          the job site — I've run site surveys with total stations and dumpy levels, written measurement
-          books, and just as often opened AutoCAD and Staad-Pro to push a design through analysis.
+        <p class="text-mist mb-5 text-[15px] md:text-base content-copy">
+          I am a structural engineer and planner based in Solan, Himachal Pradesh, with eight years
+          of experience across construction design, project management, quantity estimation, billing,
+          interior and exterior design, and 3D visualization. My work connects the drawing board to the
+          job site — from total station surveys and measurement books to AutoCAD layouts and Staad-Pro analysis.
         </p>
-        <p class="text-mist leading-relaxed mb-8 text-[15px] md:text-base">
-          Whether it's a hillside resort, a housing project or a steel entrance gate for NHAI, I bring
-          the same habit to every job: organized documentation, a clean and safe site, and clear
-          communication with clients, contractors and government officials alike.
+        <p class="text-mist mb-8 text-[15px] md:text-base content-copy">
+          Whether it is a hillside resort, a residential project, or a steel entrance gate for NHAI,
+          I bring the same disciplined approach to every assignment: clear documentation, safe execution,
+          and smooth communication with clients, contractors, and government stakeholders.
         </p>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div class="skill-row pl-3"><div class="font-display text-xl font-bold text-paper">M.Tech</div><div class="eyebrow text-mist/60">Structural Eng.</div></div>
@@ -557,9 +561,9 @@
           <span class="eyebrow text-mist">Available for work</span>
         </div>
         <h2 class="font-display text-3xl md:text-5xl font-bold text-paper mb-6 leading-tight">Let's build<br>something solid.</h2>
-        <p class="text-mist leading-relaxed mb-10 max-w-md">
-          Whether it's a structural review, a full design-to-billing engagement, or a
-          3D walkthrough for your next project — reach out and let's talk specifics.
+        <p class="text-mist mb-10 max-w-md content-copy">
+          Whether you need a structural review, a full design-to-billing engagement, or a
+          3D walkthrough for your next project, I would be glad to discuss the scope and timeline.
         </p>
         <div class="space-y-5">
           <a href="mailto:thearchspacedesign@gmail.com" class="flex items-center gap-4 group">
