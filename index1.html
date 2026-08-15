@@ -2,33 +2,36 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abhishek Kapil — Structural Engineer &amp; Planner</title>
-<meta name="description" content="Abhishek Kapil — Structural Engineer &amp; Planner. 8+ years in construction design, project management, structural analysis &amp; 3D visualization across Himachal Pradesh.">
+<meta name="description" content="Abhishek Kapil — Structural Engineer &amp; Planner. 8+ years in construction design, project management, structural analysis &amp; 3D visualization.">
 <link rel="icon" type="image/png" href="https://thearchspacedesign.vercel.app/imgs/logo.png">
 
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 
+<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
+
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          navy: { deep: '#081826', mid: '#0F2C42', line: '#1B4560', raise:'#123650' },
+          navy: { deep: '#081826', mid: '#0F2C42', line: '#1B4560' },
           cyan: { line: '#6FB7C9', bright: '#9AD4E1' },
-          rust: { DEFAULT: '#C1653B', dark: '#9C4F2E', light:'#E08A5B' },
+          rust: { DEFAULT: '#C1653B', dark: '#9C4F2E' },
           paper: '#EFE9DC',
           ink: '#141A1F',
           mist: '#A9C0CC',
-          brass: '#C7A567',
         },
         fontFamily: {
-          display: ['"Fraunces"', 'serif'],
-          head: ['"Space Grotesk"', 'sans-serif'],
+          display: ['"Space Grotesk"', 'sans-serif'],
           body: ['"Inter"', 'sans-serif'],
           mono: ['"JetBrains Mono"', 'monospace'],
           sign: ['"Caveat"', 'cursive'],
@@ -38,24 +41,29 @@
   }
 </script>
 
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
 <style>
   :root{
-    --navy-deep:#081826; --navy-mid:#0F2C42; --navy-line:#1B4560; --navy-raise:#123650;
+    --navy-deep:#081826; --navy-mid:#0F2C42; --navy-line:#1B4560;
     --cyan-line:#6FB7C9; --cyan-bright:#9AD4E1;
-    --rust:#C1653B; --rust-dark:#9C4F2E; --rust-light:#E08A5B;
-    --paper:#EFE9DC; --ink:#141A1F; --mist:#A9C0CC; --brass:#C7A567;
+    --rust:#C1653B; --rust-dark:#9C4F2E;
+    --paper:#EFE9DC; --ink:#141A1F; --mist:#A9C0CC;
   }
   html{scroll-behavior:smooth;}
-  body{background:var(--navy-deep);color:var(--mist);font-family:'Inter',sans-serif;overflow-x:hidden;}
+  body{
+    background:var(--navy-deep);
+    color:var(--mist);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+  }
   ::selection{background:var(--rust);color:#fff;}
+
+  /* Scrollbar */
   ::-webkit-scrollbar{width:10px;}
   ::-webkit-scrollbar-track{background:var(--navy-deep);}
   ::-webkit-scrollbar-thumb{background:var(--navy-line);border-radius:0;}
   ::-webkit-scrollbar-thumb:hover{background:var(--cyan-line);}
-  :focus-visible{outline:2px solid var(--cyan-bright); outline-offset:3px;}
 
+  /* Blueprint grid background */
   .blueprint-grid{
     background-image:
       linear-gradient(rgba(111,183,201,0.07) 1px, transparent 1px),
@@ -68,105 +76,148 @@
   .paper-texture{
     background-color:var(--paper);
     background-image:
-      radial-gradient(rgba(20,26,31,0.05) 0.6px, transparent 0.6px),
-      linear-gradient(rgba(20,26,31,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(20,26,31,0.03) 1px, transparent 1px);
-    background-size:14px 14px, 32px 32px, 32px 32px;
+      linear-gradient(rgba(20,26,31,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20,26,31,0.035) 1px, transparent 1px);
+    background-size:32px 32px;
   }
 
-  /* Title block frame */
+  /* Title block frame — signature device */
   .title-block{position:relative;}
-  .tb-corners{position:absolute;inset:0;pointer-events:none;}
-  .title-block::before,.title-block::after,.tb-corners::before,.tb-corners::after{
-    content:'';position:absolute;width:14px;height:14px;border:1.5px solid var(--cyan-line);opacity:.85;
-    transition:width .35s ease, height .35s ease, opacity .35s ease;
+  .title-block::before,.title-block::after,
+  .title-block .tb-br,.title-block .tb-bl{
+    content:'';position:absolute;width:14px;height:14px;
+    border:1.5px solid var(--cyan-line);opacity:.8;
   }
   .title-block::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
   .title-block::after{top:-1px;right:-1px;border-left:none;border-bottom:none;}
+  .tb-corners{position:absolute;inset:0;pointer-events:none;}
+  .tb-corners::before,.tb-corners::after{
+    content:'';position:absolute;width:14px;height:14px;border:1.5px solid var(--cyan-line);opacity:.8;
+  }
   .tb-corners::before{bottom:-1px;left:-1px;border-right:none;border-top:none;}
   .tb-corners::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
-  .title-block:hover::before,.title-block:hover::after,
-  .title-block:hover .tb-corners::before,.title-block:hover .tb-corners::after{width:22px;height:22px;opacity:1;}
+
   .title-block-light::before,.title-block-light::after{border-color:var(--rust);opacity:.6;}
   .title-block-light .tb-corners::before,.title-block-light .tb-corners::after{border-color:var(--rust);opacity:.6;}
 
-  .dim-line{display:flex;align-items:center;gap:.75rem;color:var(--cyan-line);}
+  /* Dimension line divider */
+  .dim-line{
+    display:flex;align-items:center;gap:.75rem;
+    color:var(--cyan-line);
+  }
   .dim-line .line{flex:1;height:1px;background:linear-gradient(90deg, transparent, var(--navy-line) 10%, var(--navy-line) 90%, transparent);position:relative;}
-  .dim-line .line::before,.dim-line .line::after{content:'';position:absolute;top:-3px;width:1px;height:7px;background:var(--navy-line);}
+  .dim-line .line::before,.dim-line .line::after{
+    content:'';position:absolute;top:-3px;width:1px;height:7px;background:var(--navy-line);
+  }
   .dim-line .line::before{left:0;} .dim-line .line::after{right:0;}
   .dim-line-light .line{background:linear-gradient(90deg, transparent, rgba(20,26,31,0.25) 10%, rgba(20,26,31,0.25) 90%, transparent);}
   .dim-line-light .line::before,.dim-line-light .line::after{background:rgba(20,26,31,0.35);}
 
-  .eyebrow{font-family:'JetBrains Mono',monospace;letter-spacing:.18em;font-size:.7rem;text-transform:uppercase;}
-  .hero-title{font-family:'Fraunces','Space Grotesk',serif;letter-spacing:-0.01em;font-optical-sizing:auto;}
-  .font-head{font-family:'Space Grotesk',sans-serif;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    letter-spacing:.18em;
+    font-size:.7rem;
+    text-transform:uppercase;
+  }
 
-  .bp-card{background:var(--navy-mid);border:1px solid var(--navy-line);transition:transform .4s cubic-bezier(.2,.8,.2,1), border-color .35s ease, box-shadow .4s ease, background .35s ease;}
-  .bp-card:hover{transform:translateY(-7px);border-color:var(--cyan-line);box-shadow:0 24px 48px -20px rgba(0,0,0,.65), 0 0 0 1px rgba(111,183,201,.18);background:var(--navy-raise);}
+  /* Hero heading */
+  .hero-title{
+    font-family:'Space Grotesk',sans-serif;
+    letter-spacing:-0.02em;
+  }
 
-  .chip{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.03em;border:1px solid var(--navy-line);color:var(--mist);transition:all .25s ease;}
-  .chip:hover{border-color:var(--cyan-line);color:var(--cyan-bright);background:rgba(111,183,201,.08);transform:translateY(-2px);}
+  /* Cards */
+  .bp-card{
+    background:var(--navy-mid);
+    border:1px solid var(--navy-line);
+    transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+  }
+  .bp-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--cyan-line);
+    box-shadow:0 20px 40px -20px rgba(0,0,0,.6), 0 0 0 1px rgba(111,183,201,.15);
+  }
 
+  .chip{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.03em;
+    border:1px solid var(--navy-line);
+    color:var(--mist);
+    transition:all .25s ease;
+  }
+  .chip:hover{border-color:var(--cyan-line);color:var(--cyan-bright);background:rgba(111,183,201,.06);}
+
+  /* Nav */
   #navbar{transition:all .4s ease;}
   #navbar.scrolled{background:rgba(8,24,38,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--navy-line);}
-  .nav-link{position:relative;}
-  .nav-link::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--cyan-line);transition:width .3s ease;}
-  .nav-link:hover::after,.nav-link.active::after{width:100%;}
-  .nav-link.active{color:var(--cyan-bright);}
 
-  .compass{animation:spin 44s linear infinite;}
+  .nav-link{position:relative;}
+  .nav-link::after{
+    content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--cyan-line);
+    transition:width .3s ease;
+  }
+  .nav-link:hover::after{width:100%;}
+
+  /* Compass rotate */
+  .compass{animation:spin 40s linear infinite;}
   @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* Scroll cue */
   .scroll-cue{animation:bob 2s ease-in-out infinite;}
   @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
+
+  /* Fade line draw */
   .draw-line{stroke-dasharray:1000;stroke-dashoffset:1000;animation:draw 2.6s ease forwards;}
   @keyframes draw{to{stroke-dashoffset:0;}}
 
+  /* Timeline */
   .tl-rail{background:linear-gradient(180deg, transparent, var(--navy-line) 8%, var(--navy-line) 92%, transparent);}
-  .tl-dot{background:var(--navy-deep);border:2px solid var(--cyan-line);transition:all .35s ease;}
-  .tl-item:hover .tl-dot{background:var(--cyan-line);box-shadow:0 0 0 6px rgba(111,183,201,.16);transform:scale(1.15);}
-  .tl-item .tl-tag{transition:transform .35s ease;}
-  .tl-item:hover .tl-tag{transform:translateX(4px);}
+  .tl-dot{background:var(--navy-deep);border:2px solid var(--cyan-line);}
+  .tl-item:hover .tl-dot{background:var(--cyan-line);box-shadow:0 0 0 5px rgba(111,183,201,.15);}
 
+  /* Counter */
   .stat-num{font-family:'Space Grotesk',sans-serif;font-variant-numeric:tabular-nums;}
 
-  .btn-primary{background:var(--rust);color:#fff;transition:all .3s ease;position:relative;overflow:hidden;isolation:isolate;}
-  .btn-primary::before{content:'';position:absolute;inset:0;background:var(--rust-light);transform:translateX(-101%);transition:transform .35s ease;z-index:-1;}
-  .btn-primary:hover::before{transform:translateX(0);}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 26px -10px rgba(193,101,59,.55);}
-  .btn-primary:active{transform:translateY(0);}
+  /* Buttons */
+  .btn-primary{
+    background:var(--rust);color:#fff;
+    transition:all .3s ease;
+    position:relative;overflow:hidden;
+  }
+  .btn-primary:hover{background:var(--rust-dark);transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(193,101,59,.5);}
 
-  .btn-outline{border:1px solid var(--cyan-line);color:var(--cyan-bright);transition:all .3s ease;}
-  .btn-outline:hover{background:rgba(111,183,201,.09);transform:translateY(-2px);box-shadow:0 10px 22px -12px rgba(111,183,201,.4);}
+  .btn-outline{
+    border:1px solid var(--cyan-line);color:var(--cyan-bright);
+    transition:all .3s ease;
+  }
+  .btn-outline:hover{background:rgba(111,183,201,.08);transform:translateY(-2px);}
 
+  /* Signature */
   .signature{font-family:'Caveat',cursive;}
 
-  #mobileMenu{transform:translateX(100%);transition:transform .5s cubic-bezier(.77,0,.18,1);}
+  /* Mobile menu */
+  #mobileMenu{transform:translateX(100%);transition:transform .45s cubic-bezier(.77,0,.18,1);}
   #mobileMenu.open{transform:translateX(0);}
 
-  #crosshair{position:fixed;top:0;left:0;width:22px;height:22px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;opacity:0;transition:opacity .3s ease;}
+  /* Cursor crosshair (desktop only) */
+  #crosshair{
+    position:fixed;top:0;left:0;width:22px;height:22px;pointer-events:none;z-index:9999;
+    transform:translate(-50%,-50%);mix-blend-mode:screen;opacity:0;transition:opacity .3s ease;
+  }
   @media (hover:hover) and (pointer:fine){ #crosshair{opacity:1;} }
 
-  .skill-tag{border-left:2px solid var(--cyan-line);transition:all .25s ease;}
-  .skill-tag:hover{border-left-color:var(--rust);background:rgba(111,183,201,.05);padding-left:1rem;}
+  /* Skill grid tick */
+  .skill-tag{border-left:2px solid var(--cyan-line);}
 
+  /* back to top */
   #backToTop{opacity:0;pointer-events:none;transition:opacity .3s ease, transform .3s ease;}
   #backToTop.show{opacity:1;pointer-events:auto;}
+
   section{scroll-margin-top:70px;}
-
-  /* project card stamp */
-  .stamp{border:2px solid var(--rust);color:var(--rust);border-radius:50%;transform:rotate(-14deg) scale(.85);opacity:0;transition:all .4s cubic-bezier(.2,.8,.2,1);}
-  .proj-card:hover .stamp{opacity:1;transform:rotate(-14deg) scale(1);}
-  .proj-card .proj-img{transition:transform .6s cubic-bezier(.2,.8,.2,1), filter .6s ease;}
-  .proj-card:hover .proj-img{transform:scale(1.06);filter:saturate(1.15);}
-
-  /* magnetic hire button wrapper handled in JS */
-
-  /* tilt card */
-  .tilt{transform-style:preserve-3d; will-change:transform;}
 
   @media (prefers-reduced-motion: reduce){
     .compass{animation:none;} .scroll-cue{animation:none;} .draw-line{animation:none;stroke-dashoffset:0;}
-    .bp-card,.proj-card .proj-img,.btn-primary,.btn-outline{transition:none!important;}
   }
 </style>
 </head>
@@ -179,23 +230,23 @@
 <!-- ===================== NAVBAR ===================== -->
 <header id="navbar" class="fixed top-0 left-0 w-full z-50">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-[70px]">
-    <a href="#home" class="font-head font-semibold text-lg text-white tracking-tight flex items-center gap-2.5">
-      <span class="w-9 h-9 border border-cyan-line/60 flex items-center justify-center text-cyan-bright text-sm font-mono">AK</span>
+    <a href="#home" class="font-display font-semibold text-lg text-white tracking-tight flex items-center gap-2">
+      <span class="w-8 h-8 border border-cyan-line/60 flex items-center justify-center text-cyan-bright text-sm font-mono">AK</span>
       <span class="hidden sm:inline">Abhishek Kapil</span>
     </a>
-    <nav class="hidden md:flex items-center gap-9 font-mono text-xs tracking-wider uppercase text-mist" id="deskNav">
-      <a href="#about" class="nav-link hover:text-cyan-bright" data-sec="about">About</a>
-      <a href="#skills" class="nav-link hover:text-cyan-bright" data-sec="skills">Skills</a>
-      <a href="#experience" class="nav-link hover:text-cyan-bright" data-sec="experience">Experience</a>
-      <a href="#projects" class="nav-link hover:text-cyan-bright" data-sec="projects">Projects</a>
-      <a href="#education" class="nav-link hover:text-cyan-bright" data-sec="education">Education</a>
-      <a href="#contact" class="nav-link hover:text-cyan-bright" data-sec="contact">Contact</a>
+    <nav class="hidden md:flex items-center gap-9 font-mono text-xs tracking-wider uppercase text-mist">
+      <a href="#about" class="nav-link hover:text-cyan-bright">About</a>
+      <a href="#skills" class="nav-link hover:text-cyan-bright">Skills</a>
+      <a href="#experience" class="nav-link hover:text-cyan-bright">Experience</a>
+      <a href="#projects" class="nav-link hover:text-cyan-bright">Projects</a>
+      <a href="#education" class="nav-link hover:text-cyan-bright">Education</a>
+      <a href="#contact" class="nav-link hover:text-cyan-bright">Contact</a>
     </nav>
     <a href="https://thearchspacedesign.vercel.app/" target="_blank" rel="noopener" class="hidden lg:inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-mist/60 hover:text-cyan-bright transition-colors mr-2">
       ArchSpace Studio
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
     </a>
-    <a href="#contact" id="magneticBtn" class="hidden md:inline-block btn-primary font-mono text-xs uppercase tracking-wider px-5 py-2.5">Hire Me</a>
+    <a href="#contact" class="hidden md:inline-block btn-primary font-mono text-xs uppercase tracking-wider px-5 py-2.5">Hire Me</a>
     <button id="menuBtn" class="md:hidden text-cyan-bright" aria-label="Open menu">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
@@ -203,8 +254,8 @@
 </header>
 
 <!-- Mobile Menu -->
-<div id="mobileMenu" class="fixed top-0 right-0 h-full w-[80%] max-w-xs bg-navy-mid border-l border-navy-line z-[60] flex flex-col p-8 gap-6 overflow-y-auto">
-  <div class="flex justify-between items-center mb-4">
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-[78%] max-w-xs bg-navy-mid border-l border-navy-line z-[60] flex flex-col p-8 gap-7">
+  <div class="flex justify-between items-center mb-6">
     <span class="font-mono text-xs text-cyan-bright uppercase tracking-widest">Menu</span>
     <button id="closeMenu" class="text-mist" aria-label="Close menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -224,7 +275,8 @@
 <section id="home" class="relative min-h-screen flex items-center blueprint-grid overflow-hidden pt-24 pb-16">
   <div class="absolute inset-0 bg-gradient-to-b from-navy-deep via-navy-deep/95 to-navy-deep"></div>
 
-  <div class="absolute top-28 right-6 md:right-16 opacity-40 compass hidden sm:block">
+  <!-- compass -->
+  <div class="absolute top-28 right-6 md:right-16 opacity-40 compass">
     <svg width="90" height="90" viewBox="0 0 100 100" fill="none">
       <circle cx="50" cy="50" r="46" stroke="#6FB7C9" stroke-width="0.7"/>
       <circle cx="50" cy="50" r="2" fill="#C1653B"/>
@@ -242,8 +294,8 @@
         <span class="eyebrow text-cyan-line">SHEET 01 / 06 — PROFILE</span>
       </div>
       <p class="eyebrow text-rust mb-3">Structural Engineer &amp; Planner · Solan, H.P.</p>
-      <h1 class="hero-title text-white text-[2.7rem] leading-[1.05] sm:text-6xl md:text-7xl font-semibold mb-6">
-        Abhishek<br><span class="text-cyan-bright italic">Kapil.</span>
+      <h1 class="hero-title text-white text-[2.6rem] leading-[1.05] sm:text-6xl md:text-7xl font-bold mb-6">
+        Abhishek<br><span class="text-cyan-bright">Kapil.</span>
       </h1>
       <p class="text-mist text-base md:text-lg max-w-xl leading-relaxed mb-9">
         8 years turning site surveys and load calculations into buildings that stand —
@@ -285,9 +337,9 @@
     </div>
     <div class="grid md:grid-cols-12 gap-14 items-start">
       <div class="md:col-span-4" data-aos="fade-right">
-        <div class="title-block title-block-light relative w-full aspect-[4/5] bg-navy-deep flex items-center justify-center overflow-hidden group">
+        <div class="title-block title-block-light relative w-full aspect-[4/5] bg-navy-deep flex items-center justify-center">
           <div class="tb-corners"></div>
-          <span class="font-display italic text-8xl text-cyan-line/80 font-semibold group-hover:scale-105 transition-transform duration-500">AK</span>
+          <span class="font-display text-8xl text-cyan-line/80 font-bold">AK</span>
           <div class="absolute bottom-4 left-4 right-4 font-mono text-[10px] text-mist/70 flex justify-between">
             <span>DOB · 23.11.1994</span>
             <span>SOLAN, HP</span>
@@ -296,8 +348,8 @@
         <p class="signature text-4xl text-ink/80 mt-4 text-right pr-2">Abhishek Kapil</p>
       </div>
       <div class="md:col-span-8" data-aos="fade-left">
-        <h2 class="font-display text-3xl md:text-5xl font-semibold text-ink mb-6 leading-tight">
-          Detail-oriented by trade, <br class="hidden md:block"><span class="italic">precise by nature.</span>
+        <h2 class="font-display text-3xl md:text-5xl font-bold text-ink mb-6 leading-tight">
+          Detail-oriented by trade, <br class="hidden md:block">precise by nature.
         </h2>
         <p class="text-ink/70 leading-relaxed mb-5 text-[15px] md:text-base">
           I'm a structural engineer and planner based in Solan, Himachal Pradesh, with eight years
@@ -313,19 +365,19 @@
         </p>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div class="border-l-2 border-rust pl-3">
-            <div class="font-head text-xl font-bold text-ink">M.Tech</div>
+            <div class="font-display text-xl font-bold text-ink">M.Tech</div>
             <div class="eyebrow text-ink/50">Structural Eng.</div>
           </div>
           <div class="border-l-2 border-rust pl-3">
-            <div class="font-head text-xl font-bold text-ink">8.6</div>
+            <div class="font-display text-xl font-bold text-ink">8.6</div>
             <div class="eyebrow text-ink/50">CGPA · M.Tech</div>
           </div>
           <div class="border-l-2 border-rust pl-3">
-            <div class="font-head text-xl font-bold text-ink">3</div>
+            <div class="font-display text-xl font-bold text-ink">3</div>
             <div class="eyebrow text-ink/50">Languages</div>
           </div>
           <div class="border-l-2 border-rust pl-3">
-            <div class="font-head text-xl font-bold text-ink">1</div>
+            <div class="font-display text-xl font-bold text-ink">1</div>
             <div class="eyebrow text-ink/50">Published Paper</div>
           </div>
         </div>
@@ -340,7 +392,7 @@
     <div class="dim-line mb-4 max-w-xs">
       <span class="eyebrow text-cyan-line">SHEET 03 / 06 — TOOLKIT</span>
     </div>
-    <h2 class="font-display italic text-3xl md:text-5xl font-semibold text-white mb-14" data-aos="fade-up">Skills &amp; Expertise</h2>
+    <h2 class="font-display text-3xl md:text-5xl font-bold text-white mb-14" data-aos="fade-up">Skills &amp; Expertise</h2>
 
     <div class="grid lg:grid-cols-5 gap-10">
       <div class="lg:col-span-2 bp-card p-8" data-aos="fade-up">
@@ -377,6 +429,7 @@
       </div>
     </div>
 
+    <!-- Surveying instruments strip -->
     <div class="mt-10 grid sm:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="150">
       <div class="flex items-center gap-4 bp-card p-5">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6FB7C9" stroke-width="1.3"><circle cx="12" cy="8" r="3"/><path d="M12 11v10M6 21h12"/></svg>
@@ -400,15 +453,16 @@
     <div class="dim-line dim-line-light mb-4 max-w-xs">
       <span class="eyebrow text-rust">SHEET 04 / 06 — TIMELINE</span>
     </div>
-    <h2 class="font-display italic text-3xl md:text-5xl font-semibold text-ink mb-16" data-aos="fade-up">Work Experience</h2>
+    <h2 class="font-display text-3xl md:text-5xl font-bold text-ink mb-16" data-aos="fade-up">Work Experience</h2>
 
     <div class="relative pl-8 md:pl-10">
       <div class="tl-rail absolute left-[7px] md:left-[9px] top-2 bottom-2 w-[2px]"></div>
 
+      <!-- Item 1 -->
       <div class="tl-item relative mb-16" data-aos="fade-up">
-        <div class="tl-dot absolute -left-8 md:-left-10 top-1.5 w-4 h-4 rounded-full"></div>
-        <p class="eyebrow text-rust mb-1 tl-tag">OCT 2021 — PRESENT</p>
-        <h3 class="font-head text-xl md:text-2xl font-bold text-ink">Structural Engineer &amp; Planner</h3>
+        <div class="tl-dot absolute -left-8 md:-left-10 top-1.5 w-4 h-4 rounded-full transition-all"></div>
+        <p class="eyebrow text-rust mb-1">OCT 2021 — PRESENT</p>
+        <h3 class="font-display text-xl md:text-2xl font-bold text-ink">Structural Engineer &amp; Planner</h3>
         <p class="text-ink/60 mb-4 text-sm">ArchSpace Design, Solan</p>
         <ul class="text-ink/70 text-sm md:text-[15px] space-y-2 leading-relaxed list-disc list-inside marker:text-rust">
           <li>Planning &amp; design of commercial and residential projects, ensuring safety and budget compliance.</li>
@@ -419,10 +473,11 @@
         </ul>
       </div>
 
+      <!-- Item 2 -->
       <div class="tl-item relative mb-16" data-aos="fade-up">
-        <div class="tl-dot absolute -left-8 md:-left-10 top-1.5 w-4 h-4 rounded-full"></div>
-        <p class="eyebrow text-rust mb-1 tl-tag">MAY 2018 — JUN 2019</p>
-        <h3 class="font-head text-xl md:text-2xl font-bold text-ink">Civil Site Engineer, Design &amp; Planning</h3>
+        <div class="tl-dot absolute -left-8 md:-left-10 top-1.5 w-4 h-4 rounded-full transition-all"></div>
+        <p class="eyebrow text-rust mb-1">MAY 2018 — JUN 2019</p>
+        <h3 class="font-display text-xl md:text-2xl font-bold text-ink">Civil Site Engineer, Design &amp; Planning</h3>
         <p class="text-ink/60 mb-4 text-sm">Er. Yogesh Awasthi, Solan (Class A Contractor)</p>
         <ul class="text-ink/70 text-sm md:text-[15px] space-y-2 leading-relaxed list-disc list-inside marker:text-rust">
           <li>Designed layouts for buildings &amp; retaining walls in AutoCAD, Civil 3D and Staad-Pro.</li>
@@ -432,10 +487,11 @@
         </ul>
       </div>
 
+      <!-- Item 3 -->
       <div class="tl-item relative mb-16" data-aos="fade-up">
-        <div class="tl-dot absolute -left-8 md:-left-10 top-1.5 w-4 h-4 rounded-full"></div>
-        <p class="eyebrow text-rust mb-1 tl-tag">APR 2017 — MAR 2018</p>
-        <h3 class="font-head text-xl md:text-2xl font-bold text-ink">Apprentice Trainee, Civil Design Dept.</h3>
+        <div class="tl-dot absolute -left-8 md:-left-10 top-1.5 w-4 h-4 rounded-full transition-all"></div>
+        <p class="eyebrow text-rust mb-1">APR 2017 — MAR 2018</p>
+        <h3 class="font-display text-xl md:text-2xl font-bold text-ink">Apprentice Trainee, Civil Design Dept.</h3>
         <p class="text-ink/60 mb-4 text-sm">Satluj Jal Vidyut Nigam Ltd. — RHEP, 412 MW (PSU)</p>
         <ul class="text-ink/70 text-sm md:text-[15px] space-y-2 leading-relaxed list-disc list-inside marker:text-rust">
           <li>Site supervision of residential/official buildings, roads, canals &amp; head-race tunnel.</li>
@@ -444,10 +500,11 @@
         </ul>
       </div>
 
+      <!-- Item 4 -->
       <div class="tl-item relative mb-16" data-aos="fade-up">
-        <div class="tl-dot absolute -left-8 md:-left-10 top-1.5 w-4 h-4 rounded-full"></div>
-        <p class="eyebrow text-rust mb-1 tl-tag">AUG 2016 — MAR 2017</p>
-        <h3 class="font-head text-xl md:text-2xl font-bold text-ink">Site Supervisor</h3>
+        <div class="tl-dot absolute -left-8 md:-left-10 top-1.5 w-4 h-4 rounded-full transition-all"></div>
+        <p class="eyebrow text-rust mb-1">AUG 2016 — MAR 2017</p>
+        <h3 class="font-display text-xl md:text-2xl font-bold text-ink">Site Supervisor</h3>
         <p class="text-ink/60 mb-4 text-sm">Suman Verma Govt. Contractor, Solan</p>
         <ul class="text-ink/70 text-sm md:text-[15px] space-y-2 leading-relaxed list-disc list-inside marker:text-rust">
           <li>Managed commercial/residential sites, a 200sqm food-processing lab &amp; a tubewell.</li>
@@ -455,24 +512,15 @@
         </ul>
       </div>
 
-      <div class="tl-item relative mb-16" data-aos="fade-up">
-        <div class="tl-dot absolute -left-8 md:-left-10 top-1.5 w-4 h-4 rounded-full"></div>
-        <p class="eyebrow text-rust mb-1 tl-tag">JAN 2016 — JUN 2016</p>
-        <h3 class="font-head text-xl md:text-2xl font-bold text-ink">Engineer Trainee</h3>
+      <!-- Item 5 -->
+      <div class="tl-item relative" data-aos="fade-up">
+        <div class="tl-dot absolute -left-8 md:-left-10 top-1.5 w-4 h-4 rounded-full transition-all"></div>
+        <p class="eyebrow text-rust mb-1">JAN 2016 — JUN 2016</p>
+        <h3 class="font-display text-xl md:text-2xl font-bold text-ink">Engineer Trainee</h3>
         <p class="text-ink/60 mb-4 text-sm">Dr. Y.S. Parmar University of Horticulture &amp; Forestry</p>
         <ul class="text-ink/70 text-sm md:text-[15px] space-y-2 leading-relaxed list-disc list-inside marker:text-rust">
           <li>Project management, labour handling, survey works &amp; contour mapping.</li>
           <li>Slump, cube &amp; sieve analysis tests; structural drawings in AutoCAD &amp; Staad-Pro.</li>
-        </ul>
-      </div>
-
-      <div class="tl-item relative" data-aos="fade-up">
-        <div class="tl-dot absolute -left-8 md:-left-10 top-1.5 w-4 h-4 rounded-full"></div>
-        <p class="eyebrow text-rust mb-1 tl-tag">JAN 2015 — JUN 2015</p>
-        <h3 class="font-head text-xl md:text-2xl font-bold text-ink">Structural Design Trainee</h3>
-        <p class="text-ink/60 mb-4 text-sm">CADD Centre Training Services Pvt. Ltd., Chandigarh</p>
-        <ul class="text-ink/70 text-sm md:text-[15px] space-y-2 leading-relaxed list-disc list-inside marker:text-rust">
-          <li>Trained on AutoCAD, Civil 3D &amp; Staad-Pro — structural modelling, load application and design calculations.</li>
         </ul>
       </div>
     </div>
@@ -485,92 +533,79 @@
     <div class="dim-line mb-4 max-w-xs">
       <span class="eyebrow text-cyan-line">SHEET 05 / 06 — PROJECTS</span>
     </div>
-    <div class="flex flex-wrap items-end justify-between gap-4 mb-14">
-      <h2 class="font-display italic text-3xl md:text-5xl font-semibold text-white" data-aos="fade-up">Selected Projects</h2>
-      <a href="https://thearchspacedesign.vercel.app/" target="_blank" rel="noopener" class="eyebrow text-cyan-line hover:text-cyan-bright transition-colors flex items-center gap-1.5" data-aos="fade-up">
-        Full studio portfolio
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
-      </a>
-    </div>
+    <h2 class="font-display text-3xl md:text-5xl font-bold text-white mb-14" data-aos="fade-up">Selected Projects</h2>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bp-card proj-card p-6 relative overflow-hidden" data-aos="fade-up">
-        <div class="stamp absolute top-4 right-4 w-14 h-14 flex items-center justify-center font-mono text-[8px] uppercase tracking-wide text-center leading-tight">Site<br>Approved</div>
+      <!-- card template repeated -->
+      <div class="bp-card p-6" data-aos="fade-up">
         <div class="flex items-center justify-between mb-5">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1653B" stroke-width="1.4"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
           <span class="eyebrow text-mist/50">RESORT</span>
         </div>
-        <h3 class="font-head text-lg font-semibold text-white mb-1">The Chail Pine Orchard Resort</h3>
+        <h3 class="font-display text-lg font-semibold text-white mb-1">The Chail Pine Orchard Resort</h3>
         <p class="text-mist/70 text-sm">Hospitality design &amp; structural planning, Chail.</p>
       </div>
 
-      <div class="bp-card proj-card p-6 relative overflow-hidden" data-aos="fade-up" data-aos-delay="50">
-        <div class="stamp absolute top-4 right-4 w-14 h-14 flex items-center justify-center font-mono text-[8px] uppercase tracking-wide text-center leading-tight">Site<br>Approved</div>
+      <div class="bp-card p-6" data-aos="fade-up" data-aos-delay="50">
         <div class="flex items-center justify-between mb-5">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1653B" stroke-width="1.4"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
           <span class="eyebrow text-mist/50">VILLAS</span>
         </div>
-        <h3 class="font-head text-lg font-semibold text-white mb-1">WoodSpring Villas</h3>
+        <h3 class="font-display text-lg font-semibold text-white mb-1">WoodSpring Villas</h3>
         <p class="text-mist/70 text-sm">Residential villa layout &amp; design, Chail.</p>
       </div>
 
-      <div class="bp-card proj-card p-6 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-        <div class="stamp absolute top-4 right-4 w-14 h-14 flex items-center justify-center font-mono text-[8px] uppercase tracking-wide text-center leading-tight">Site<br>Approved</div>
+      <div class="bp-card p-6" data-aos="fade-up" data-aos-delay="100">
         <div class="flex items-center justify-between mb-5">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1653B" stroke-width="1.4"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
           <span class="eyebrow text-mist/50">RETREAT</span>
         </div>
-        <h3 class="font-head text-lg font-semibold text-white mb-1">Advaita Retreat</h3>
+        <h3 class="font-display text-lg font-semibold text-white mb-1">Advaita Retreat</h3>
         <p class="text-mist/70 text-sm">Structural design &amp; 3D visualization.</p>
       </div>
 
-      <div class="bp-card proj-card p-6 relative overflow-hidden" data-aos="fade-up">
-        <div class="stamp absolute top-4 right-4 w-14 h-14 flex items-center justify-center font-mono text-[8px] uppercase tracking-wide text-center leading-tight">Site<br>Approved</div>
+      <div class="bp-card p-6" data-aos="fade-up">
         <div class="flex items-center justify-between mb-5">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1653B" stroke-width="1.4"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
           <span class="eyebrow text-mist/50">RESORT</span>
         </div>
-        <h3 class="font-head text-lg font-semibold text-white mb-1">Pinetree Resort</h3>
+        <h3 class="font-display text-lg font-semibold text-white mb-1">Pinetree Resort</h3>
         <p class="text-mist/70 text-sm">Design layout &amp; structural analysis.</p>
       </div>
 
-      <div class="bp-card proj-card p-6 relative overflow-hidden" data-aos="fade-up" data-aos-delay="50">
-        <div class="stamp absolute top-4 right-4 w-14 h-14 flex items-center justify-center font-mono text-[8px] uppercase tracking-wide text-center leading-tight">Site<br>Approved</div>
+      <div class="bp-card p-6" data-aos="fade-up" data-aos-delay="50">
         <div class="flex items-center justify-between mb-5">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1653B" stroke-width="1.4"><path d="M4 21V9l8-6 8 6v12M4 21h16M9 21v-5h6v5"/></svg>
           <span class="eyebrow text-mist/50">INFRASTRUCTURE</span>
         </div>
-        <h3 class="font-head text-lg font-semibold text-white mb-1">Shimla Entrance Steel Gate</h3>
+        <h3 class="font-display text-lg font-semibold text-white mb-1">Shimla Entrance Steel Gate</h3>
         <p class="text-mist/70 text-sm">"Welcome to Shimla" gate project for NHAI.</p>
       </div>
 
-      <div class="bp-card proj-card p-6 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-        <div class="stamp absolute top-4 right-4 w-14 h-14 flex items-center justify-center font-mono text-[8px] uppercase tracking-wide text-center leading-tight">Site<br>Approved</div>
+      <div class="bp-card p-6" data-aos="fade-up" data-aos-delay="100">
         <div class="flex items-center justify-between mb-5">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1653B" stroke-width="1.4"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
           <span class="eyebrow text-mist/50">INFRASTRUCTURE</span>
         </div>
-        <h3 class="font-head text-lg font-semibold text-white mb-1">Parking Projects with HPPWD</h3>
+        <h3 class="font-display text-lg font-semibold text-white mb-1">Parking Projects with HPPWD</h3>
         <p class="text-mist/70 text-sm">Rooftop &amp; ground parking structural design.</p>
       </div>
 
-      <div class="bp-card proj-card p-6 relative overflow-hidden sm:col-span-2 lg:col-span-1" data-aos="fade-up">
-        <div class="stamp absolute top-4 right-4 w-14 h-14 flex items-center justify-center font-mono text-[8px] uppercase tracking-wide text-center leading-tight">Site<br>Approved</div>
+      <div class="bp-card p-6 sm:col-span-2 lg:col-span-1" data-aos="fade-up">
         <div class="flex items-center justify-between mb-5">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1653B" stroke-width="1.4"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
           <span class="eyebrow text-mist/50">HOUSING</span>
         </div>
-        <h3 class="font-head text-lg font-semibold text-white mb-1">Housing Projects, Solan</h3>
+        <h3 class="font-display text-lg font-semibold text-white mb-1">Housing Projects, Solan</h3>
         <p class="text-mist/70 text-sm">Multiple residential design &amp; planning works.</p>
       </div>
 
-      <div class="bp-card proj-card p-6 relative overflow-hidden" data-aos="fade-up" data-aos-delay="50">
-        <div class="stamp absolute top-4 right-4 w-14 h-14 flex items-center justify-center font-mono text-[8px] uppercase tracking-wide text-center leading-tight">Thesis<br>Grade A</div>
+      <div class="bp-card p-6" data-aos="fade-up" data-aos-delay="50">
         <div class="flex items-center justify-between mb-5">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1653B" stroke-width="1.4"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
           <span class="eyebrow text-mist/50">HOSTEL</span>
         </div>
-        <h3 class="font-head text-lg font-semibold text-white mb-1">Girls Hostel + Rooftop Parking</h3>
+        <h3 class="font-display text-lg font-semibold text-white mb-1">Girls Hostel + Rooftop Parking</h3>
         <p class="text-mist/70 text-sm">1094.85 sqm hostel &amp; 948 sqm rooftop parking, B.Tech thesis project.</p>
       </div>
 
@@ -589,28 +624,29 @@
     <div class="dim-line dim-line-light mb-4 max-w-xs">
       <span class="eyebrow text-rust">SHEET 06 / 06 — CREDENTIALS</span>
     </div>
-    <h2 class="font-display italic text-3xl md:text-5xl font-semibold text-ink mb-14" data-aos="fade-up">Education &amp; Credentials</h2>
+    <h2 class="font-display text-3xl md:text-5xl font-bold text-ink mb-14" data-aos="fade-up">Education &amp; Credentials</h2>
 
     <div class="grid md:grid-cols-2 gap-6 mb-14">
       <div class="title-block title-block-light relative bg-navy-deep p-8" data-aos="fade-up">
         <div class="tb-corners"></div>
         <p class="eyebrow text-rust mb-2">2019 — 2021</p>
-        <h3 class="font-head text-xl font-bold text-white mb-1">M.Tech, Structural Engineering</h3>
+        <h3 class="font-display text-xl font-bold text-white mb-1">M.Tech, Structural Engineering</h3>
         <p class="text-mist text-sm mb-4">Jaypee University of Information Technology · CGPA 8.6</p>
         <p class="text-mist/70 text-sm leading-relaxed">Thesis: Utilization &amp; testing of waste materials using concrete block technology. Earned scholarship, ranked top 5.</p>
       </div>
       <div class="title-block title-block-light relative bg-navy-deep p-8" data-aos="fade-up" data-aos-delay="100">
         <div class="tb-corners"></div>
         <p class="eyebrow text-rust mb-2">2012 — 2016</p>
-        <h3 class="font-head text-xl font-bold text-white mb-1">B.Tech, Civil Engineering</h3>
+        <h3 class="font-display text-xl font-bold text-white mb-1">B.Tech, Civil Engineering</h3>
         <p class="text-mist text-sm mb-4">Bahra University, Shimla Hills, Solan · CGPA 8.25</p>
         <p class="text-mist/70 text-sm leading-relaxed">Thesis project: 1094.85 sqm girls hostel with 948 sqm rooftop parking for light-weight vehicles, ramp included.</p>
       </div>
     </div>
 
+    <!-- Publication -->
     <div class="bp-card !border-ink/10 !bg-navy-deep p-8 mb-14" data-aos="fade-up">
       <p class="eyebrow text-cyan-line mb-3">PUBLISHED REVIEW PAPER</p>
-      <p class="text-white text-lg font-display italic mb-2">"A State of Art Review upon Concrete Block Technology"</p>
+      <p class="text-white text-lg font-display mb-2">"A State of Art Review upon Concrete Block Technology"</p>
       <p class="text-mist/70 text-sm">Abhishek Kapil &amp; Dr. Tanmay Gupta — International Journal of Advances in Engineering and Management, Vol. 3, Issue 5, May 2021, pp. 1176–1190. DOI: 10.35629/5252-030511761190</p>
     </div>
 
@@ -655,20 +691,20 @@
     </div>
     <div class="grid lg:grid-cols-2 gap-14 items-start">
       <div data-aos="fade-right">
-        <h2 class="font-display italic text-3xl md:text-5xl font-semibold text-white mb-6 leading-tight">Let's build<br>something solid.</h2>
+        <h2 class="font-display text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">Let's build<br>something solid.</h2>
         <p class="text-mist leading-relaxed mb-10 max-w-md">
           Whether it's a structural review, a full design-to-billing engagement, or a
           3D walkthrough for your next project — reach out and let's talk specifics.
         </p>
         <div class="space-y-5">
           <a href="mailto:thearchspacedesign@gmail.com" class="flex items-center gap-4 group">
-            <span class="w-11 h-11 border border-navy-line flex items-center justify-center group-hover:border-cyan-line group-hover:bg-navy-mid transition-all">
+            <span class="w-11 h-11 border border-navy-line flex items-center justify-center group-hover:border-cyan-line transition-colors">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6FB7C9" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>
             </span>
             <span class="text-mist group-hover:text-cyan-bright transition-colors text-sm md:text-base">thearchspacedesign@gmail.com</span>
           </a>
           <a href="tel:+917018070338" class="flex items-center gap-4 group">
-            <span class="w-11 h-11 border border-navy-line flex items-center justify-center group-hover:border-cyan-line group-hover:bg-navy-mid transition-all">
+            <span class="w-11 h-11 border border-navy-line flex items-center justify-center group-hover:border-cyan-line transition-colors">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6FB7C9" stroke-width="1.5"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.1-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
             </span>
             <span class="text-mist group-hover:text-cyan-bright transition-colors text-sm md:text-base">+91 70180 70338</span>
@@ -688,45 +724,34 @@
         </div>
 
         <div class="flex items-center gap-4 mt-8">
-          <!-- TODO: replace # with the real LinkedIn profile URL -->
-          <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-11 h-11 border border-navy-line flex items-center justify-center hover:border-cyan-line hover:-translate-y-0.5 transition-all">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6FB7C9" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="11" x2="8" y2="16"/><circle cx="8" cy="8" r="0.8" fill="#6FB7C9" stroke="none"/><path d="M12 16v-3.2c0-1.3 1-2.3 2.2-2.3s2.3 1 2.3 2.3V16"/></svg>
-          </a>
-          <a href="https://www.instagram.com/archspacedesign?igsh=MW1sa2Zldml5YTR4Zg==" target="_blank" rel="noopener" aria-label="Instagram" class="w-11 h-11 border border-navy-line flex items-center justify-center hover:border-cyan-line hover:-translate-y-0.5 transition-all">
+          <a href="https://www.instagram.com/archspacedesign?igsh=MW1sa2Zldml5YTR4Zg==" target="_blank" rel="noopener" aria-label="Instagram" class="w-11 h-11 border border-navy-line flex items-center justify-center hover:border-cyan-line transition-colors">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6FB7C9" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#6FB7C9" stroke="none"/></svg>
           </a>
-          <a href="tel:+917018070338" aria-label="Call" class="w-11 h-11 border border-navy-line flex items-center justify-center hover:border-cyan-line hover:-translate-y-0.5 transition-all">
+          <a href="tel:+917018070338" aria-label="Call" class="w-11 h-11 border border-navy-line flex items-center justify-center hover:border-cyan-line transition-colors">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6FB7C9" stroke-width="1.5"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.1-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
           </a>
-          <a href="https://thearchspacedesign.vercel.app/" target="_blank" rel="noopener" aria-label="ArchSpace Design website" class="w-11 h-11 border border-navy-line flex items-center justify-center hover:border-cyan-line hover:-translate-y-0.5 transition-all">
+          <a href="https://thearchspacedesign.vercel.app/" target="_blank" rel="noopener" aria-label="ArchSpace Design website" class="w-11 h-11 border border-navy-line flex items-center justify-center hover:border-cyan-line transition-colors">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6FB7C9" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
           </a>
         </div>
       </div>
 
-      <!--
-        FORM SETUP (Formspree — no backend needed):
-        1. Go to https://formspree.io, sign up free, click "New Form".
-        2. Copy the endpoint it gives you, e.g. https://formspree.io/f/xxxxabcd
-        3. Replace YOUR_FORM_ID below with that ID (just the last part of the URL).
-        That's it — submissions land in your Formspree inbox / forward to your email.
-      -->
-      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="title-block relative bg-navy-mid p-7 md:p-9" data-aos="fade-left">
+      <form id="contactForm" class="title-block relative bg-navy-mid p-7 md:p-9" data-aos="fade-left">
         <div class="tb-corners"></div>
         <div class="mb-5">
           <label class="eyebrow text-mist/60 block mb-2">Name</label>
-          <input required type="text" name="name" placeholder="Your full name" class="w-full bg-transparent border border-navy-line focus:border-cyan-line outline-none px-4 py-3 text-white text-sm placeholder:text-mist/40 transition-colors">
+          <input required type="text" placeholder="Your full name" class="w-full bg-transparent border border-navy-line focus:border-cyan-line outline-none px-4 py-3 text-white text-sm placeholder:text-mist/40 transition-colors">
         </div>
         <div class="mb-5">
           <label class="eyebrow text-mist/60 block mb-2">Email</label>
-          <input required type="email" name="email" placeholder="you@example.com" class="w-full bg-transparent border border-navy-line focus:border-cyan-line outline-none px-4 py-3 text-white text-sm placeholder:text-mist/40 transition-colors">
+          <input required type="email" placeholder="you@example.com" class="w-full bg-transparent border border-navy-line focus:border-cyan-line outline-none px-4 py-3 text-white text-sm placeholder:text-mist/40 transition-colors">
         </div>
         <div class="mb-6">
           <label class="eyebrow text-mist/60 block mb-2">Project Details</label>
-          <textarea required rows="4" name="message" placeholder="Tell me about your project..." class="w-full bg-transparent border border-navy-line focus:border-cyan-line outline-none px-4 py-3 text-white text-sm placeholder:text-mist/40 transition-colors resize-none"></textarea>
+          <textarea required rows="4" placeholder="Tell me about your project..." class="w-full bg-transparent border border-navy-line focus:border-cyan-line outline-none px-4 py-3 text-white text-sm placeholder:text-mist/40 transition-colors resize-none"></textarea>
         </div>
-        <button type="submit" id="formSubmitBtn" class="btn-primary w-full font-mono text-xs uppercase tracking-wider py-3.5">Send Message</button>
-        <p id="formNote" class="eyebrow mt-4 text-center hidden"></p>
+        <button type="submit" class="btn-primary w-full font-mono text-xs uppercase tracking-wider py-3.5">Send Message</button>
+        <p id="formNote" class="eyebrow text-mist/40 mt-4 text-center hidden">Message ready — connect an email service to send.</p>
       </form>
     </div>
   </div>
@@ -754,8 +779,10 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init({ duration: 800, once: true, offset: 60, easing: 'ease-out-cubic' });
+
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Navbar scroll state
   const navbar = document.getElementById('navbar');
   const backToTop = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
@@ -764,17 +791,19 @@
   });
   backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 
+  // Mobile menu
   const menuBtn = document.getElementById('menuBtn');
   const closeMenu = document.getElementById('closeMenu');
   const mobileMenu = document.getElementById('mobileMenu');
   const menuOverlay = document.getElementById('menuOverlay');
-  function openMobileMenu(){ mobileMenu.classList.add('open'); menuOverlay.classList.remove('hidden'); document.body.style.overflow='hidden'; }
-  function closeMobileMenu(){ mobileMenu.classList.remove('open'); menuOverlay.classList.add('hidden'); document.body.style.overflow=''; }
+  function openMobileMenu(){ mobileMenu.classList.add('open'); menuOverlay.classList.remove('hidden'); }
+  function closeMobileMenu(){ mobileMenu.classList.remove('open'); menuOverlay.classList.add('hidden'); }
   menuBtn.addEventListener('click', openMobileMenu);
   closeMenu.addEventListener('click', closeMobileMenu);
   menuOverlay.addEventListener('click', closeMobileMenu);
   document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMobileMenu));
 
+  // Counter animation
   const counters = document.querySelectorAll('.counter');
   let counted = false;
   function runCounters(){
@@ -792,90 +821,28 @@
   }
   const heroStats = document.querySelector('.counter');
   if(heroStats){
-    const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) runCounters(); }); }, {threshold: 0.4});
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) runCounters(); });
+    }, {threshold: 0.4});
     obs.observe(heroStats);
   }
 
+  // Cursor crosshair
   const crosshair = document.getElementById('crosshair');
   if(crosshair){
-    window.addEventListener('mousemove', (e) => { crosshair.style.left = e.clientX + 'px'; crosshair.style.top = e.clientY + 'px'; });
-  }
-
-  // Magnetic hire-me button
-  const magBtn = document.getElementById('magneticBtn');
-  if(magBtn && window.matchMedia('(hover:hover)').matches){
-    magBtn.addEventListener('mousemove', (e) => {
-      const r = magBtn.getBoundingClientRect();
-      const x = e.clientX - r.left - r.width/2;
-      const y = e.clientY - r.top - r.height/2;
-      magBtn.style.transform = `translate(${x*0.25}px, ${y*0.4}px)`;
-    });
-    magBtn.addEventListener('mouseleave', () => { magBtn.style.transform = ''; });
-  }
-
-  // Subtle tilt on bp-cards (desktop only)
-  if(window.matchMedia('(hover:hover)').matches){
-    document.querySelectorAll('.bp-card').forEach(card => {
-      card.classList.add('tilt');
-      card.addEventListener('mousemove', (e) => {
-        const r = card.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - 0.5;
-        const py = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform = `translateY(-7px) rotateX(${py*-4}deg) rotateY(${px*4}deg)`;
-      });
-      card.addEventListener('mouseleave', () => { card.style.transform=''; });
+    window.addEventListener('mousemove', (e) => {
+      crosshair.style.left = e.clientX + 'px';
+      crosshair.style.top = e.clientY + 'px';
     });
   }
 
-  // Active nav link on scroll
-  const secIds = ['about','skills','experience','projects','education','contact'];
-  const navLinks = document.querySelectorAll('#deskNav .nav-link');
-  const secObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        navLinks.forEach(l => l.classList.toggle('active', l.dataset.sec === entry.target.id));
-      }
-    });
-  }, {rootMargin: '-45% 0px -50% 0px'});
-  secIds.forEach(id => { const el = document.getElementById(id); if(el) secObserver.observe(el); });
-
-  // Contact form — submits to Formspree (see setup comment above the form)
+  // Contact form (no backend wired — shows note)
   const form = document.getElementById('contactForm');
   const note = document.getElementById('formNote');
-  const submitBtn = document.getElementById('formSubmitBtn');
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(form.action.includes('YOUR_FORM_ID')){
-      note.textContent = 'Form not connected yet — add your Formspree ID in the HTML (see comment above the form).';
-      note.classList.remove('hidden','text-cyan-bright');
-      note.classList.add('text-mist/40');
-      return;
-    }
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
-    try{
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-      if(res.ok){
-        note.textContent = 'Message sent — I\'ll get back to you soon.';
-        note.classList.remove('hidden','text-mist/40');
-        note.classList.add('text-cyan-bright');
-        form.reset();
-      } else {
-        throw new Error('Submit failed');
-      }
-    } catch(err){
-      note.textContent = 'Something went wrong — please email directly instead.';
-      note.classList.remove('hidden','text-cyan-bright');
-      note.classList.add('text-mist/40');
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
-      setTimeout(() => note.classList.add('hidden'), 6000);
-    }
+    note.classList.remove('hidden');
+    setTimeout(() => note.classList.add('hidden'), 4000);
   });
 </script>
 </body>
