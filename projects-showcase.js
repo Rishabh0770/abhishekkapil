@@ -18,6 +18,11 @@
     caption: document.getElementById('galleryCaption'),
     counter: document.getElementById('galleryCounter'),
     thumbnails: document.getElementById('galleryThumbnails'),
+    zoomControls: document.getElementById('galleryZoomControls'),
+    zoomLevel: document.getElementById('galleryZoomLevel'),
+    zoomIn: document.getElementById('galleryZoomIn'),
+    zoomOut: document.getElementById('galleryZoomOut'),
+    zoomReset: document.getElementById('galleryZoomReset'),
     close: document.getElementById('galleryClose'),
     previous: document.getElementById('galleryPrevious'),
     next: document.getElementById('galleryNext')
@@ -27,6 +32,13 @@
   let activeProject = null;
   let activeFilter = 'All files';
   let activeIndex = 0;
+  let zoomScale = 1;
+  let panX = 0;
+  let panY = 0;
+  const pointers = new Map();
+  let dragStart = null;
+  let pinchStart = null;
+  let didDrag = false;
 
   function assetUrl(path) {
     return path.split('/').map(encodeURIComponent).join('/');
@@ -122,6 +134,9 @@
 
   function renderMedia(asset) {
     elements.media.replaceChildren();
+    resetZoom();
+    elements.zoomControls.hidden = asset.kind !== 'image';
+
     if (asset.kind === 'video') {
       const video = document.createElement('video');
       video.src = assetUrl(asset.path);
@@ -141,6 +156,34 @@
     image.src = assetUrl(asset.path);
     image.alt = `${activeProject.title}: ${asset.title}`;
     image.decoding = 'async';
+    image.draggable = false;
+    image.setAttribute('role', 'button');
+    image.setAttribute('tabindex', '0');
+    image.setAttribute('aria-label', `${image.alt}. Click to zoom in; use the mouse wheel or pinch to zoom further, and drag to move.`);
+    image.title = 'Click to zoom · Scroll or pinch to zoom further · Drag to pan';
+    image.addEventListener('click', event => {
+      if (didDrag) {
+        didDrag = false;
+        return;
+      }
+      const bounds = elements.media.getBoundingClientRect();
+      setZoom(zoomScale === 1 ? 2 : 1, event.clientX - (bounds.left + bounds.width / 2), event.clientY - (bounds.top + bounds.height / 2));
+    });
+    image.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        setZoom(zoomScale === 1 ? 2 : 1);
+      }
+    });
+    image.addEventListener('wheel', event => {
+      event.preventDefault();
+      const bounds = elements.media.getBoundingClientRect();
+      setZoom(zoomScale * Math.exp(-event.deltaY * 0.002), event.clientX - (bounds.left + bounds.width / 2), event.clientY - (bounds.top + bounds.height / 2));
+    }, { passive: false });
+    image.addEventListener('pointerdown', startPointer);
+    image.addEventListener('pointermove', movePointer);
+    image.addEventListener('pointerup', endPointer);
+    image.addEventListener('pointercancel', endPointer);
     image.addEventListener('error', () => {
       console.error(`Project image failed to load: ${asset.path}`);
       showMediaError(asset);
@@ -153,6 +196,113 @@
     message.className = 'showcase-media-error';
     message.textContent = `This file could not be displayed: ${asset.title}`;
     elements.media.replaceChildren(message);
+  }
+
+  function clampPan() {
+    const image = elements.media.querySelector('img');
+    if (!image) return;
+    const maxX = Math.max(0, (image.clientWidth * zoomScale - elements.media.clientWidth) / 2);
+    const maxY = Math.max(0, (image.clientHeight * zoomScale - elements.media.clientHeight) / 2);
+    panX = Math.max(-maxX, Math.min(maxX, panX));
+    panY = Math.max(-maxY, Math.min(maxY, panY));
+  }
+
+  function updateZoom() {
+    const image = elements.media.querySelector('img');
+    if (!image) return;
+    clampPan();
+    image.style.transform = `translate(${panX}px, ${panY}px) scale(${zoomScale})`;
+    image.classList.toggle('is-zoomed', zoomScale > 1);
+    elements.zoomLevel.value = `${Math.round(zoomScale * 100)}%`;
+  }
+
+  function setZoom(nextScale, anchorX = 0, anchorY = 0) {
+    const image = elements.media.querySelector('img');
+    if (!image) return;
+    const boundedScale = Math.max(1, nextScale);
+    panX = anchorX - (anchorX - panX) * boundedScale / zoomScale;
+    panY = anchorY - (anchorY - panY) * boundedScale / zoomScale;
+    zoomScale = boundedScale;
+    updateZoom();
+  }
+
+  function resetZoom() {
+    zoomScale = 1;
+    panX = 0;
+    panY = 0;
+    pointers.clear();
+    dragStart = null;
+    pinchStart = null;
+    didDrag = false;
+    if (elements.zoomLevel) elements.zoomLevel.value = '100%';
+    const image = elements.media.querySelector('img');
+    if (image) {
+      image.style.transform = '';
+      image.classList.remove('is-zoomed', 'is-dragging');
+    }
+  }
+
+  function pointerMidpoint(points) {
+    return {
+      x: (points[0].x + points[1].x) / 2,
+      y: (points[0].y + points[1].y) / 2
+    };
+  }
+
+  function startPointer(event) {
+    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (pointers.size === 2) {
+      event.currentTarget.setPointerCapture(event.pointerId);
+      const points = [...pointers.values()];
+      pinchStart = {
+        distance: Math.hypot(points[1].x - points[0].x, points[1].y - points[0].y),
+        scale: zoomScale
+      };
+      dragStart = null;
+    } else if (zoomScale > 1) {
+      event.currentTarget.setPointerCapture(event.pointerId);
+      dragStart = { x: event.clientX, y: event.clientY, panX, panY };
+      didDrag = false;
+    }
+  }
+
+  function movePointer(event) {
+    if (!pointers.has(event.pointerId)) return;
+    const previous = pointers.get(event.pointerId);
+    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (pointers.size >= 2 && pinchStart) {
+      const points = [...pointers.values()];
+      const midpoint = pointerMidpoint(points);
+      const bounds = elements.media.getBoundingClientRect();
+      const distance = Math.hypot(points[1].x - points[0].x, points[1].y - points[0].y);
+      setZoom(pinchStart.scale * distance / pinchStart.distance, midpoint.x - (bounds.left + bounds.width / 2), midpoint.y - (bounds.top + bounds.height / 2));
+      didDrag = true;
+    } else if (dragStart) {
+      const deltaX = event.clientX - dragStart.x;
+      const deltaY = event.clientY - dragStart.y;
+      if (Math.hypot(deltaX, deltaY) > 4) didDrag = true;
+      panX = dragStart.panX + deltaX;
+      panY = dragStart.panY + deltaY;
+      elements.media.querySelector('img').classList.toggle('is-dragging', didDrag);
+      updateZoom();
+    } else if (previous) {
+      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    }
+  }
+
+  function endPointer(event) {
+    pointers.delete(event.pointerId);
+    const image = elements.media.querySelector('img');
+    if (image) image.classList.remove('is-dragging');
+    pinchStart = null;
+    dragStart = null;
+    if (pointers.size === 1 && zoomScale > 1) {
+      const [id, point] = [...pointers.entries()][0];
+      const remainingImage = elements.media.querySelector('img');
+      if (remainingImage && remainingImage.hasPointerCapture(id)) {
+        dragStart = { x: point.x, y: point.y, panX, panY };
+      }
+    }
   }
 
   function renderThumbnails(assets) {
@@ -226,6 +376,9 @@
   }
 
   elements.close.addEventListener('click', () => dialog.close());
+  elements.zoomIn.addEventListener('click', () => setZoom(zoomScale * 1.5));
+  elements.zoomOut.addEventListener('click', () => setZoom(zoomScale / 1.5));
+  elements.zoomReset.addEventListener('click', resetZoom);
   elements.previous.addEventListener('click', () => stepMedia(-1));
   elements.next.addEventListener('click', () => stepMedia(1));
   dialog.addEventListener('click', event => {
