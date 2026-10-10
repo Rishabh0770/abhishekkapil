@@ -124,9 +124,59 @@
 
   .avail-dot{width:7px;height:7px;border-radius:50%;background:#5FD79A;box-shadow:0 0 0 3px rgba(95,215,154,.18);}
 
+  .showcase-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;}
+  @media (min-width:640px){.showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;}}
+  @media (min-width:1100px){.showcase-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+  .showcase-card{display:block;width:100%;padding:0;overflow:hidden;text-align:left;color:inherit;background:linear-gradient(155deg,rgba(34,38,45,.96),rgba(27,30,35,.98));border:1px solid var(--line);cursor:pointer;transition:border-color .3s ease,transform .3s ease,box-shadow .3s ease;}
+  .showcase-card:hover{transform:translateY(-5px);border-color:rgba(110,156,192,.75);box-shadow:0 24px 48px -32px rgba(0,0,0,.9);}
+  .showcase-cover{position:relative;display:grid;place-items:center;aspect-ratio:1.52;background:radial-gradient(ellipse at 50% 100%,rgba(110,156,192,.12),transparent 70%),#101215;border-bottom:1px solid var(--line);overflow:hidden;}
+  .showcase-cover img{width:100%;height:100%;padding:.45rem;object-fit:contain;transition:transform .5s ease;}
+  .showcase-card:hover .showcase-cover img{transform:scale(1.025);}
+  .showcase-cover-label{position:absolute;left:1rem;bottom:1rem;padding:.35rem .55rem;background:rgba(17,19,22,.84);border:1px solid rgba(152,161,172,.2);color:var(--paper);font:500 .62rem 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;}
+  .showcase-card-body{display:block;padding:1.25rem 1.35rem 1.4rem;}
+  .showcase-card-type{display:block;font:500 .62rem 'JetBrains Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--steel-bright);}
+  .showcase-card-title{display:block;margin:.55rem 0 .45rem;color:var(--paper);font:600 1.2rem/1.25 'Sora',sans-serif;letter-spacing:-.025em;}
+  .showcase-card-location{display:block;margin:0 0 .75rem;color:var(--mist);font:500 .67rem 'JetBrains Mono',monospace;letter-spacing:.045em;}
+  .showcase-card-description{display:block;margin:0;max-width:none;color:rgba(152,161,172,.83);font-size:.88rem;line-height:1.7;}
+  .showcase-card-footer{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-top:1.1rem;padding-top:.9rem;border-top:1px solid rgba(46,51,59,.85);}
+  .showcase-asset-count{color:var(--mist);font:500 .65rem 'JetBrains Mono',monospace;letter-spacing:.05em;}
+  .showcase-open-label{display:inline-flex;align-items:center;gap:.4rem;color:var(--safety);font:500 .65rem 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em;}
+  .showcase-dialog{width:min(1280px,96vw);max-width:none;max-height:94dvh;margin:auto;padding:0;overflow:hidden;color:var(--paper);background:#15171b;border:1px solid #3a424b;box-shadow:0 32px 100px rgba(0,0,0,.75);}
+  .showcase-dialog::backdrop{background:rgba(5,7,9,.84);backdrop-filter:blur(8px);}
+  .showcase-dialog-shell{display:flex;flex-direction:column;max-height:94dvh;}
+  .showcase-dialog-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;padding:1.15rem 1.25rem;border-bottom:1px solid var(--line);}
+  .showcase-dialog-kicker{margin:0 0 .35rem;color:var(--safety);font:500 .62rem 'JetBrains Mono',monospace;letter-spacing:.13em;text-transform:uppercase;}
+  .showcase-dialog-title{margin:0;color:var(--paper);font:600 clamp(1.05rem,2.5vw,1.55rem)/1.25 'Sora',sans-serif;}
+  .showcase-dialog-location{margin:.35rem 0 0;color:var(--mist);font:500 .65rem 'JetBrains Mono',monospace;letter-spacing:.05em;}
+  .showcase-close{flex:0 0 auto;width:2.5rem;height:2.5rem;display:grid;place-items:center;border:1px solid var(--line);color:var(--paper);background:#1b1e23;cursor:pointer;}
+  .showcase-close:hover{border-color:var(--steel);color:var(--steel-bright);}
+  .showcase-filters{display:flex;gap:.5rem;overflow-x:auto;padding:.8rem 1.25rem;border-bottom:1px solid var(--line);scrollbar-width:thin;}
+  .showcase-filter{flex:0 0 auto;padding:.48rem .72rem;border:1px solid var(--line);border-radius:999px;color:var(--mist);background:transparent;font:500 .63rem 'JetBrains Mono',monospace;cursor:pointer;white-space:nowrap;}
+  .showcase-filter:hover,.showcase-filter[aria-pressed="true"]{border-color:var(--steel);color:var(--paper);background:rgba(110,156,192,.12);}
+  .showcase-viewer{position:relative;display:flex;align-items:center;justify-content:center;min-height:230px;height:min(53vh,620px);padding:1rem 4.2rem;background:radial-gradient(ellipse at center,#20242a 0%,#0b0d0f 76%);}
+  .showcase-media{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-width:0;min-height:0;}
+  .showcase-media img,.showcase-media video{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;}
+  .showcase-media video{width:100%;height:100%;}
+  .showcase-media-error{color:#ffb4a9;font-size:.9rem;text-align:center;}
+  .showcase-nav{position:absolute;top:50%;z-index:1;display:grid;place-items:center;width:2.7rem;height:2.7rem;transform:translateY(-50%);border:1px solid rgba(152,161,172,.3);border-radius:50%;color:var(--paper);background:rgba(17,19,22,.82);cursor:pointer;}
+  .showcase-nav:hover{border-color:var(--steel);color:var(--steel-bright);}
+  .showcase-nav:disabled{opacity:.35;cursor:not-allowed;}
+  .showcase-nav-prev{left:.8rem;}
+  .showcase-nav-next{right:.8rem;}
+  .showcase-caption{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 1.25rem;color:var(--paper);}
+  .showcase-caption-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.82rem;font-weight:500;}
+  .showcase-caption-count{flex:0 0 auto;color:var(--mist);font:500 .63rem 'JetBrains Mono',monospace;}
+  .showcase-thumbnails{display:flex;gap:.55rem;overflow-x:auto;padding:.25rem 1.25rem 1.1rem;scrollbar-width:thin;}
+  .showcase-thumb{position:relative;flex:0 0 96px;width:96px;height:68px;padding:3px;overflow:hidden;border:1px solid var(--line);background:#0b0d0f;cursor:pointer;}
+  .showcase-thumb[aria-current="true"]{border-color:var(--safety);box-shadow:0 0 0 1px var(--safety);}
+  .showcase-thumb img{display:block;width:100%;height:100%;object-fit:contain;}
+  .showcase-thumb-video{display:grid;place-items:center;width:100%;height:100%;color:var(--steel-bright);background:linear-gradient(145deg,#242a31,#111316);}
+  .showcase-thumb-index{position:absolute;right:3px;bottom:3px;padding:0 .2rem;color:var(--paper);background:rgba(0,0,0,.72);font:500 .55rem 'JetBrains Mono',monospace;}
+  @media (max-width:639px){.showcase-dialog{width:100vw;max-height:100dvh;height:100dvh;border:0;}.showcase-dialog-shell{max-height:100dvh;height:100dvh;}.showcase-dialog-header{padding:.85rem 1rem;}.showcase-filters{padding:.7rem 1rem;}.showcase-viewer{height:48dvh;min-height:210px;padding:.5rem 2.9rem;}.showcase-nav{width:2.2rem;height:2.2rem;}.showcase-nav-prev{left:.35rem;}.showcase-nav-next{right:.35rem;}.showcase-caption{padding:.65rem 1rem;}.showcase-thumbnails{padding:0 1rem 1rem;}}
+
   @media (prefers-reduced-motion: reduce){
     .draw-line{animation:none;stroke-dashoffset:0;} .dot-pulse{animation:none;} .scroll-cue{animation:none;}
-    .plate,.btn-primary,.btn-outline{transition:none!important;}
+    .plate,.btn-primary,.btn-outline,.showcase-card,.showcase-cover img{transition:none!important;}
   }
 </style>
 </head>
@@ -422,76 +472,50 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     <div class="sheet-rule mb-4 max-w-xs"><span class="eyebrow">S-05 · PROJECTS</span><span class="ln"></span></div>
     <div class="flex flex-wrap items-end justify-between gap-4 mb-14">
-      <h2 class="font-display text-3xl md:text-5xl font-bold text-paper" data-aos="fade-up">Selected Projects</h2>
+      <div>
+        <p class="eyebrow text-safety mb-3">Selected work · <span id="showcaseProjectCount">07</span> case studies</p>
+        <h2 class="font-display text-3xl md:text-5xl font-bold text-paper mb-4" data-aos="fade-up">Projects, fully realised.</h2>
+        <p class="text-mist max-w-2xl mb-0">Browse <span id="showcaseAssetCount" class="text-paper font-semibold">104</span> original files across all seven projects — 3D visualisations, plans, structural drawings, site progress and walkthrough videos.</p>
+      </div>
       <a href="https://thearchspacedesign.vercel.app/" target="_blank" rel="noopener" class="eyebrow text-steel hover:text-steel-bright transition-colors flex items-center gap-1.5" data-aos="fade-up">
         Full studio portfolio
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </a>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="plate p-6" data-aos="fade-up">
-        <div class="flex items-center justify-between mb-5">
-          <span class="grade-badge text-[10px] px-2 py-1 rounded">M25 · Fe500</span>
-          <span class="eyebrow text-mist/50">RESORT</span>
-        </div>
-        <h3 class="font-display text-lg font-semibold text-paper mb-1">The Chail Pine Orchard Resort</h3>
-        <p class="text-mist/70 text-sm">Hospitality design &amp; structural planning, Chail.</p>
-      </div>
-
-      <div class="plate p-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="flex items-center justify-between mb-5">
-          <span class="grade-badge text-[10px] px-2 py-1 rounded">M25 · Fe500</span>
-          <span class="eyebrow text-mist/50">RETREAT</span>
-        </div>
-        <h3 class="font-display text-lg font-semibold text-paper mb-1">Advaita Retreat</h3>
-        <p class="text-mist/70 text-sm">Structural design &amp; 3D visualization.</p>
-      </div>
-
-      <div class="plate p-6" data-aos="fade-up">
-        <div class="flex items-center justify-between mb-5">
-          <span class="grade-badge text-[10px] px-2 py-1 rounded">M20 · Fe415</span>
-          <span class="eyebrow text-mist/50">RESORT</span>
-        </div>
-        <h3 class="font-display text-lg font-semibold text-paper mb-1">Pinetree Resort</h3>
-        <p class="text-mist/70 text-sm">Design layout &amp; structural analysis.</p>
-      </div>
-
-      <div class="plate p-6" data-aos="fade-up" data-aos-delay="50">
-        <div class="flex items-center justify-between mb-5">
-          <span class="grade-badge text-[10px] px-2 py-1 rounded">ISMB · IS 800</span>
-          <span class="eyebrow text-mist/50">INFRASTRUCTURE</span>
-        </div>
-        <h3 class="font-display text-lg font-semibold text-paper mb-1">Shimla Entrance Steel Gate</h3>
-        <p class="text-mist/70 text-sm">"Welcome to Shimla" gate project for NHAI.</p>
-      </div>
-
-      <div class="plate p-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="flex items-center justify-between mb-5">
-          <span class="grade-badge text-[10px] px-2 py-1 rounded">M25 · RCC</span>
-          <span class="eyebrow text-mist/50">INFRASTRUCTURE</span>
-        </div>
-        <h3 class="font-display text-lg font-semibold text-paper mb-1">Parking Projects with HPPWD</h3>
-        <p class="text-mist/70 text-sm">Rooftop &amp; ground parking structural design.</p>
-      </div>
-
-      <div class="plate p-6 sm:col-span-2 lg:col-span-1" data-aos="fade-up">
-        <div class="flex items-center justify-between mb-5">
-          <span class="grade-badge text-[10px] px-2 py-1 rounded">M20 · Fe415</span>
-          <span class="eyebrow text-mist/50">HOUSING</span>
-        </div>
-        <h3 class="font-display text-lg font-semibold text-paper mb-1">Housing Projects, Solan</h3>
-        <p class="text-mist/70 text-sm">Multiple residential design &amp; planning works.</p>
-      </div>
-
-      <div class="plate p-6 flex flex-col justify-center items-start" data-aos="fade-up" data-aos-delay="100">
-        <p class="eyebrow text-steel mb-2">+ MORE</p>
-        <p class="text-mist/70 text-sm mb-4">A few additional residential &amp; commercial projects across Solan &amp; Shimla region.</p>
-        <a href="#contact" class="text-steel-bright text-sm font-mono underline decoration-dotted underline-offset-4">Ask for full portfolio →</a>
-      </div>
-    </div>
+    <div id="projectShowcaseGrid" class="showcase-grid" aria-label="Project case studies"></div>
   </div>
 </section>
+
+<dialog id="projectGallery" class="showcase-dialog" aria-labelledby="galleryTitle">
+  <div class="showcase-dialog-shell">
+    <header class="showcase-dialog-header">
+      <div>
+        <p id="galleryKicker" class="showcase-dialog-kicker"></p>
+        <h2 id="galleryTitle" class="showcase-dialog-title"></h2>
+        <p id="galleryLocation" class="showcase-dialog-location"></p>
+      </div>
+      <button id="galleryClose" type="button" class="showcase-close" aria-label="Close project gallery">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+    </header>
+    <nav id="galleryFilters" class="showcase-filters" aria-label="Filter project media"></nav>
+    <div class="showcase-viewer" aria-label="Project media viewer">
+      <button id="galleryPrevious" type="button" class="showcase-nav showcase-nav-prev" aria-label="Previous item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div id="galleryMedia" class="showcase-media" aria-live="polite"></div>
+      <button id="galleryNext" type="button" class="showcase-nav showcase-nav-next" aria-label="Next item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+    <div class="showcase-caption">
+      <span id="galleryCaption" class="showcase-caption-title"></span>
+      <span id="galleryCounter" class="showcase-caption-count"></span>
+    </div>
+    <div id="galleryThumbnails" class="showcase-thumbnails" aria-label="All project media"></div>
+  </div>
+</dialog>
 
 <!-- ===================== EDUCATION + CERTS + PUBLICATION ===================== -->
 <section id="education" class="hatch-bg py-24 md:py-32 relative">
@@ -756,5 +780,7 @@
     }
   });
 </script>
+<script src="projects-data.js"></script>
+<script src="projects-showcase.js"></script>
 </body>
 </html>
